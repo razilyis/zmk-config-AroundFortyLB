@@ -30,9 +30,4 @@
                 ;
     };
 
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        triggers-per-rotation = <10>;
-    };
 };
