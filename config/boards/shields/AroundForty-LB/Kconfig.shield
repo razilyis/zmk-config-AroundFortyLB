@@ -1,5 +1,5 @@
-config config SHIELD_AROUNDFORTY_LB_R
+config SHIELD_AROUNDFORTY_LB_R
     def_bool $(shields_list_contains,AroundForty-LB_R)
 
-config config SHIELD_AROUNDFORTY_LB_L
+config SHIELD_AROUNDFORTY_LB_L
     def_bool $(shields_list_contains,AroundForty-LB_L)
