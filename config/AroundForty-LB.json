@@ -51,13 +51,5 @@
         ]
       }
     },
-    "sensors": [
-      {
-        "compatible": "alps,ec11",
-        "enabled": false
-      },
-      {
-        "enabled": false
-      }
-    ]
+    "sensors": []
   }
