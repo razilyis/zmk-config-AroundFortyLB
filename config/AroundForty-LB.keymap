@@ -2,9 +2,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <behaviors/rgbled_widget.dtsi>  // led制御
+#include <behaviors/rgbled_widget.dtsi>
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100   //スクロール量
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 #define MOUSE 6
 
@@ -19,8 +19,8 @@
         compatible = "zmk,combos";
 
         tab {
-            bindings = <&kp TAB>;   //押したとき実行されるコマンド
-            key-positions = <11 12>;    //押すキーの位置
+            bindings = <&kp TAB>;
+            key-positions = <11 12>;
         };
 
         shift_tab {
@@ -69,7 +69,6 @@
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
-            // 追加: スクロールのタップ時間を設定 (20ms)
             tap-ms = <20>;
         };
 
