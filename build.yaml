@@ -24,3 +24,10 @@ include:
     shield: AroundForty-LB_R
   - board: seeeduino_xiao_ble
     shield: settings_reset
+
+- name: Clear ZMK Cache and Old Builds
+  run: |
+    rm -rf ~/.cache/zephyr
+    rm -rf ~/.west
+    rm -rf /tmp/zmk-config/build
+    rm -rf /tmp/tmp.*
