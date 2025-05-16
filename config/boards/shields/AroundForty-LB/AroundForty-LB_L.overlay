@@ -25,7 +25,6 @@
                     <NRF_PSEL(SPIM_MISO, 1, 14)>; // MISO (P1.14_D9)
         };
     };
-};
 
     spi0_sleep: spi0_sleep {
         group1 {
