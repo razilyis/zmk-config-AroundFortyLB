@@ -17,57 +17,71 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
-include:
-  - board: seeeduino_xiao_ble
-    shield: AroundForty-LB_L
-  - board: seeeduino_xiao_ble
-    shield: AroundForty-LB_R
-  - board: seeeduino_xiao_ble
-    shield: settings_reset
+name: Build ZMK Firmware
 
-before_script:
-  - name: Clear ZMK Cache and Old Builds
-    run: |
-      echo "Clearing Zephyr and ZMK Cache"
-      rm -rf ~/.cache/zephyr
-      rm -rf ~/.west
-      rm -rf /tmp/zmk-config/build
-      rm -rf /tmp/tmp.*
-      rm -rf /tmp/zmk-config/zmk/app/dts/behaviors/key_press.dtsi || true
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-build:
-  - name: Build ZMK Firmware (Left)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_left -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_L
-    artifact: /tmp/build_left/zephyr/zmk.uf2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: timestamp
+        run: echo "ts=$(date +%s%3N)" >> $GITHUB_OUTPUT
 
-  - name: Upload ZMK Firmware (Left)
-    uses: actions/upload-artifact@v4
-    with:
-      name: zmk-firmware-left-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
-      path: /tmp/build_left/zephyr/zmk.uf2
+      - uses: actions/checkout@v3
 
-  - name: Build ZMK Firmware (Right)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_right -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_R
-    artifact: /tmp/build_right/zephyr/zmk.uf2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build python3-pip python3-setuptools
+          pip3 install -U west
 
-  - name: Upload ZMK Firmware (Right)
-    uses: actions/upload-artifact@v4
-    with:
-      name: zmk-firmware-right-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
-      path: /tmp/build_right/zephyr/zmk.uf2
+      - name: Init and update west
+        run: |
+          west init -l .
+          west update
+          west zephyr-export
 
-  - name: Build ZMK Firmware (Settings Reset)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_settings -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=settings_reset
-    artifact: /tmp/build_settings/zephyr/zmk.uf2
+      - name: Clear ZMK Cache and Old Builds
+        run: |
+          rm -rf ~/.cache/zephyr
+          rm -rf ~/.west
+          rm -rf /tmp/zmk-config/build
+          rm -rf /tmp/tmp.*
 
-  - name: Upload ZMK Firmware (Settings Reset)
-    uses: actions/upload-artifact@v4
-    with:
-      name: zmk-firmware-settings-reset-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
-      path: /tmp/build_settings/zephyr/zmk.uf2
+      - name: Build ZMK Firmware (Left)
+        run: |
+          west build -p=always -s zmk/app -d /tmp/build_left -b seeeduino_xiao_ble \
+            -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_L
+
+      - name: Upload ZMK Firmware (Left)
+        uses: actions/upload-artifact@v4
+        with:
+          name: zmk-firmware-left-${{ steps.timestamp.outputs.ts }}
+          path: /tmp/build_left/zephyr/zmk.uf2
+
+      - name: Build ZMK Firmware (Right)
+        run: |
+          west build -p=always -s zmk/app -d /tmp/build_right -b seeeduino_xiao_ble \
+            -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_R
+
+      - name: Upload ZMK Firmware (Right)
+        uses: actions/upload-artifact@v4
+        with:
+          name: zmk-firmware-right-${{ steps.timestamp.outputs.ts }}
+          path: /tmp/build_right/zephyr/zmk.uf2
+
+      - name: Build ZMK Firmware (Settings Reset)
+        run: |
+          west build -p=always -s zmk/app -d /tmp/build_settings -b seeeduino_xiao_ble \
+            -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=settings_reset
+
+      - name: Upload ZMK Firmware (Settings Reset)
+        uses: actions/upload-artifact@v4
+        with:
+          name: zmk-firmware-settings-reset-${{ steps.timestamp.outputs.ts }}
+          path: /tmp/build_settings/zephyr/zmk.uf2
