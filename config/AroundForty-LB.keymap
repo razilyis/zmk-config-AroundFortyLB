@@ -111,7 +111,7 @@
         layer_2 {
             bindings = <
 &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT    &kp CARET       &kp AMPERSAND  &kp ASTERISK  &kp MINUS  &kp EQUAL
-&kp 1            &kp 2        &kp 3     &kp 4       &kp 5          &kp UNDERSCORE  &kp 6          &kp 7         &kp 8      &kp 9
+&trans           &kp 2        &kp 3     &kp 4       &kp 5          &kp UNDERSCORE  &kp 6          &kp 7         &kp 8      &kp 9
 &kp 0            &kp F1       &kp F2    &kp F3      &kp F4         &kp F5          &kp F11        &kp F12       &kp F6     &kp F7     &kp F8  &kp F9
 &kp F10          &trans                             &trans         &trans          &trans         &trans        &trans     &trans     &trans  &trans
             >;
