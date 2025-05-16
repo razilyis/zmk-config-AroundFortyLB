@@ -19,8 +19,8 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: AroundForty-LB_L rgbled_adapter
+    shield: AroundForty-LB_L
   - board: seeeduino_xiao_ble
-    shield: AroundForty-LB_R rgbled_adapter
+    shield: AroundForty-LB_R
   - board: seeeduino_xiao_ble
     shield: settings_reset
