@@ -25,9 +25,31 @@ include:
   - board: seeeduino_xiao_ble
     shield: settings_reset
 
-- name: Clear ZMK Cache and Old Builds
-  run: |
-    rm -rf ~/.cache/zephyr
-    rm -rf ~/.west
-    rm -rf /tmp/zmk-config/build
-    rm -rf /tmp/tmp.*
+before_script:
+  - name: Clear ZMK Cache and Old Builds
+    run: |
+      echo "Clearing Zephyr and ZMK Cache"
+      rm -rf ~/.cache/zephyr
+      rm -rf ~/.west
+      rm -rf /tmp/zmk-config/build
+      rm -rf /tmp/tmp.*
+      rm -rf /tmp/zmk-config/zmk/app/dts/behaviors/key_press.dtsi || true
+
+build:
+  - name: Build ZMK Firmware (Left)
+    run: |
+      west build -p=always -s zmk/app -d /tmp/build_left -b seeeduino_xiao_ble \
+        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_L
+    artifact: /tmp/build_left/zephyr/zmk.uf2
+
+  - name: Build ZMK Firmware (Right)
+    run: |
+      west build -p=always -s zmk/app -d /tmp/build_right -b seeeduino_xiao_ble \
+        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_R
+    artifact: /tmp/build_right/zephyr/zmk.uf2
+
+  - name: Build ZMK Firmware (Settings Reset)
+    run: |
+      west build -p=always -s zmk/app -d /tmp/build_settings -b seeeduino_xiao_ble \
+        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=settings_reset
+    artifact: /tmp/build_settings/zephyr_
