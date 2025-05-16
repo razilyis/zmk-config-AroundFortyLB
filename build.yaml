@@ -24,26 +24,3 @@ include:
     shield: AroundForty-LB_R
   - board: seeeduino_xiao_ble
     shield: settings_reset
-
-before_script:
-  - name: Clear ZMK Cache
-    run: |
-      rm -rf ~/.cache/zephyr
-      rm -rf ~/.west
-      rm -rf /tmp/zmk-config/build
-
-build:
-  - name: Build ZMK Firmware (Left)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_left -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_L
-
-  - name: Build ZMK Firmware (Right)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_right -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=AroundForty-LB_R
-
-  - name: Build ZMK Firmware (Settings Reset)
-    run: |
-      west build -p=always -s zmk/app -d /tmp/build_settings -b seeeduino_xiao_ble \
-        -- -DZMK_CONFIG=/tmp/zmk-config/config -DSHIELD=settings_reset
