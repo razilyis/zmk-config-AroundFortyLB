@@ -45,7 +45,7 @@ build:
   - name: Upload ZMK Firmware (Left)
     uses: actions/upload-artifact@v4
     with:
-      name: zmk-firmware-left-${{ github.run_id }}-${{ github.sha }}
+      name: zmk-firmware-left-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
       path: /tmp/build_left/zephyr/zmk.uf2
 
   - name: Build ZMK Firmware (Right)
@@ -57,7 +57,7 @@ build:
   - name: Upload ZMK Firmware (Right)
     uses: actions/upload-artifact@v4
     with:
-      name: zmk-firmware-right-${{ github.run_id }}-${{ github.sha }}
+      name: zmk-firmware-right-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
       path: /tmp/build_right/zephyr/zmk.uf2
 
   - name: Build ZMK Firmware (Settings Reset)
@@ -69,5 +69,5 @@ build:
   - name: Upload ZMK Firmware (Settings Reset)
     uses: actions/upload-artifact@v4
     with:
-      name: zmk-firmware-settings-reset-${{ github.run_id }}-${{ github.sha }}
+      name: zmk-firmware-settings-reset-${{ github.run_id }}-${{ github.sha }}-${{ github.event_name }}-${{ github.run_number }}
       path: /tmp/build_settings/zephyr/zmk.uf2
