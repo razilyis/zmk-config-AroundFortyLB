@@ -97,7 +97,7 @@
 
         layer_1 {
             bindings = <
-&kp ESCAPE     &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp LS(COMMA)         &kp LS(PERIOD)           &trans  &kp HOME  &kp UP_ARROW    &kp END         &trans
+&kp ESCAPE     &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp LS(COMMA)         &kp LS(PERIOD)           &trans  &kp HOME  &kp UP_ARROW    &trans          &trans
 &trans         &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &trans  &trans    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
 &kp ENTER      &trans            &trans             &trans                &trans                   &trans  &trans    &trans          &trans          &kp DEL          &kp PAGE_UP  &kp PAGE_DOWN
 &kp BACKSLASH  &trans                                                     &trans                   &trans  &trans    &trans          &trans          &trans           &trans       &kp PIPE
