@@ -107,6 +107,7 @@
     keymap {
         compatible = "zmk,keymap";
 
+        //layer_0
         Mac-Default_Layer {
             bindings = <
 &kp Q             &kp W         &kp E  &kp R  &kp T          &kp Y                        &kp U          &kp I        &kp O        &kp P
@@ -120,12 +121,13 @@
                 <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
+        //layer_1
         Win-Default_Layer {
             bindings = <
-&mt LCTRL Q       &kp W         &kp E  &kp R  &kp T          &kp Y                        &kp U          &kp I        &kp O      &kp P
-&kp A             &kp S         &kp D  &kp F  &kp G          &kp H                        &kp J          &kp K        &kp L      &kp ENTER
-&mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &kp AT_SIGN    &kp N        &kp M      &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
-&kp LEFT_SHIFT    &kp LEFT_GUI                &lt 3 SPACE    &kp JP_HANZEN                &kp RCTRL  &lt 5 BACKSPACE  &kp SPACE  &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
+&mt LCTRL Q       &kp W         &kp E  &kp R  &kp T                                                      &kp Y            &kp U      &kp I         &kp O             &kp P
+&kp A             &kp S         &kp D  &kp F  &kp G                                                      &kp H            &kp J      &kp K         &kp L             &kp ENTER
+&mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &kp AT_SIGN    &kp N            &kp M      &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
+&kp LEFT_SHIFT    &kp LEFT_GUI                &lt 3 SPACE    &kp JP_HANZEN                &kp RCTRL      &lt 5 BACKSPACE  &mo 7      &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
             >;
 
             sensor-bindings =
@@ -133,6 +135,7 @@
                 <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
+        //layer_2
         Mac-Function_Layer {
             bindings = <
 &kp LG(A)       &kp LG(X)     &kp LG(C)    &kp LG(V)  &kp LG(F)    &kp LESS_THAN         &kp GREATER_THAN       &kp CARET         &kp PERCENT        &kp DOLLAR
@@ -146,6 +149,7 @@
                 <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
 
+        //layer_3
         Win-Function_Layer {
             bindings = <
 &kp LC(A)       &kp LC(X)     &kp LC(C)    &kp LC(V)  &kp LC(LS(V))    &kp LESS_THAN         &kp GREATER_THAN       &kp CARET         &kp PERCENT        &kp DOLLAR
@@ -159,6 +163,7 @@
                 <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
 
+        //layer_4
         Mac-Common_Layer {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                 &kp LG(W)    &kp LG(LEFT_ARROW)  &mkp MB3         &kp LG(RIGHT_ARROW)  &kp HOME
@@ -172,6 +177,7 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
+        //layer_5
         Win-Common_Layer {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                 &kp LC(W)        &kp LA(LEFT_ARROW)  &mkp MB3           &kp LA(RIGHT_ARROW)  &kp HOME
@@ -185,6 +191,7 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
+        //layer_6
         Auto-MOUSE_Layer {
             bindings = <
 &trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans
@@ -194,17 +201,19 @@
             >;
         };
 
+        //layer_7
         Num_Layer {
             bindings = <
-&kp F1   &kp F2   &kp F3                  &kp F4  &kp F5                     &kp PLUS   &kp MINUS      &kp N7        &kp N8     &kp N9
-&kp F6   &kp F7   &kp F8                  &kp F9  &kp F10                    &kp EQUAL  &kp COLON      &kp N4        &kp N5     &kp N6
-&kp F11  &kp F12  &kp LG(LS(LEFT_ARROW))  &trans  &kp LG(LS(RIGHT_ARROW))    &trans     &kp AMPERSAND  &kp ASTERISK  &kp SLASH  &kp N1  &kp N2         &kp N3
-&trans   &trans                                   &trans                     &trans     &kp BACKSPACE  &kp RET       &trans     &trans  &kp AMPERSAND  &kp BSPC
+&kp EXCL   &kp QMARK  &kp N7  &kp N8  &kp N9                            &kp DQT    &kp SQT      &kp LBRC   &kp RBRC      &kp MINUS
+&kp GRAVE  &kp POUND   &kp N4  &kp N5  &kp N6                           &kp UNDER  &kp EQUAL    &kp LBKT   &kp RBKT      &kp CARET
+&kp PRCNT  &kp N0     &kp N1  &kp N2  &kp N3    &trans   &kp AMPERSAND  &kp SEMI   &kp COLON    &kp LPAR   &kp RPAR      &kp SLASH
+&none      &none                      &trans    &trans   &kp BACKSPACE  &trans     &trans       &trans     &kp AMPERSAND  &kp BSPC
             >;
 
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
+        //layer_8
         Setting_Layer {
             bindings = <
 &trans      &trans       &trans  &trans  &trans    &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
