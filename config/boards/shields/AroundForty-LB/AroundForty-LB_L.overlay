@@ -19,6 +19,20 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+
+        /*
+         * AML: トラックボールが動いたら layer 6 をON
+         * 3000ms 無入力でOFF 
+         */
+        input-processors = <&zip_temp_layer 6 3000>;
+
+        /*
+         *   layer7中はスクロール化
+         */
+        scroll_mode {
+            layers = <7>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+
     };
 };
 
