@@ -1,4 +1,7 @@
 #include "AroundForty-LB.dtsi"
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &xiao_serial { status = "disabled"; };
 
