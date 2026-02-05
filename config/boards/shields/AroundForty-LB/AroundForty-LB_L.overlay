@@ -1,4 +1,7 @@
 #include "AroundForty-LB.dtsi"
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &xiao_serial { status = "disabled"; };
 
@@ -16,6 +19,16 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        status = "okay";
+
+        /* AML: トラックボールが動いたら layer 6 をON、3000ms 無入力でOFF */
+        input-processors = <&zip_temp_layer 6 3000>;
+
+        /* layer7中はスクロール化 */
+        scroll_mode {
+            layers = <7>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
 
@@ -48,11 +61,12 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        compatible = "pixart,pmw3610-alt";
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        automouse-layer = <6>;
-        scroll-layers = <7>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
     };
 };
