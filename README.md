@@ -1,13 +1,18 @@
 # zmk-config-AroundFortyLB
 
-Around Forty LeftBallのファームウェア
 
--Zmkfirmware v0.3に対応。
+Around Forty LBのファームウェアです。
 
--PMW3610のドライバを「badjeff/zmk-pmw3610-driver」に変更
+-------------------------------------------------------------------------
+mainブランチで実装済み
+-------------------------------------------------------------------------
 
--Prospector Scannerに対応
+🟢Zmkfirmware v0.3に対応。
 
--ZMK Studioに対応
+🟢PMW3610のドライバを「badjeff/zmk-pmw3610-driver」に変更
 
-<img width="788" height="2576" alt="AroundForty LB_keymap_2510" src="https://github.com/user-attachments/assets/137eb0ad-5c70-4c84-af90-02380682a4ed" />
+🟢ZMK Studioに対応
+
+🟢全角半角の切り替えマクロ：全角半角のトグルが一つのキーで可能
+
+🟡Prospector Scannerの対応はいったん見送っています　/ ※Bluetooth接続が不安定になるため
