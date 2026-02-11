@@ -2,6 +2,8 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
+#include <input/processors/runtime-input-processor.dtsi>
+#include <behaviors/battery_history_request.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &xiao_serial { status = "disabled"; };
@@ -22,13 +24,13 @@
         device = <&trackball>;
         status = "okay";
 
-        /* AML: トラックボールが動いたら layer 6 をON、3000ms 無入力でOFF */
-        input-processors = <&zip_temp_layer 6 3000>;
+        /* DYA Studio ランタイムプロセッサ（AML等を含む） */
+        input-processors = <&mouse_runtime_input_processor>;
 
-        /* layer7中はスクロール化 */
+        /* スクロールレイヤー設定 */
         scroll_mode {
             layers = <7>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
+            input-processors = <&zip_xy_to_scroll_mapper &scroll_runtime_input_processor>;
         };
     };
 };
