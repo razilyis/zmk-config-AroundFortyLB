@@ -17,7 +17,7 @@
 };
 
 / {
-    trackball_listener {
+    trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         status = "okay";
@@ -28,7 +28,8 @@
         /* layer7中はスクロール化 */
         scroll_mode {
             layers = <7>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
+            input-processors = <&zip_xy_to_scroll_mapper>,
+                               <&zip_scroll_scaler 1 45>;
         };
     };
 };
@@ -71,5 +72,8 @@
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
         force-awake;
+        inertial-scroll;
+        inertial-scroll-layers = <7>;
+        low-speed-stabilizer;
     };
 };

@@ -67,6 +67,27 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        pmw3610_inertia_toggle: pmw3610_inertia_toggle {
+            compatible = "zmk,behavior-pmw3610-inertia-toggle";
+            #binding-cells = <0>;
+            label = "PMW3610_INERTIA_TOGGLE";
+            display-name = "PMW3610 Inertia Toggle";
+        };
+
+        pmw3610_scroll_direction_toggle: pmw3610_scroll_direction_toggle {
+            compatible = "zmk,behavior-pmw3610-scroll-direction-toggle";
+            #binding-cells = <0>;
+            label = "PMW3610_SCROLL_DIRECTION_TOGGLE";
+            display-name = "PMW3610 Scroll Direction Toggle";
+        };
+
+        pmw3610_horizontal_scroll_direction_toggle: pmw3610_horizontal_scroll_direction_toggle {
+            compatible = "zmk,behavior-pmw3610-horizontal-scroll-direction-toggle";
+            #binding-cells = <0>;
+            label = "PMW3610_HORIZONTAL_SCROLL_DIRECTION_TOGGLE";
+            display-name = "PMW3610 Horizontal Scroll Direction Toggle";
+        };
     };
 
     //キーマップ設定
