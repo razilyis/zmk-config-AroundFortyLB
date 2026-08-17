@@ -83,3 +83,10 @@
     };
 
 };
+
+/* NFC ピン（P0.09 / P0.10）を GPIO として再利用する
+ * 左：kscan col-gpios と SPI CS で使用、右：kscan col-gpios で使用
+ * Zephyr 4.1 で CONFIG_NFCT_PINS_AS_GPIOS は削除され、devicetree 指定に変更された */
+&uicr {
+    nfct-pins-as-gpios;
+};
