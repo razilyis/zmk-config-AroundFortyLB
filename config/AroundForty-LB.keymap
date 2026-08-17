@@ -67,14 +67,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
-
-        mouse_scroll: mouse_wheel_scrl {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
-
-            tap-ms = <20>;
-        };
     };
 
     //キーマップ設定
@@ -89,10 +81,6 @@
 &mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &kp AT_SIGN    &kp N        &kp M        &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
 &kp LCTRL         &kp LEFT_GUI                &lt 2 SPACE    &lt_to_layer_0 7 LANGUAGE_1  &kp BACKSPACE  &lt 4 ENTER  &lt 7 SPACE  &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
             >;
-
-            sensor-bindings =
-                <&mouse_scroll SCRL_UP SCRL_DOWN>,
-                <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
         Win-Default_Layer {
@@ -102,10 +90,6 @@
 &mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &kp AT_SIGN    &kp N        &kp M      &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
 &kp LCTRL         &kp LEFT_GUI                &lt 3 SPACE    &lt_to_layer_0 7 LANGUAGE_1  &kp BACKSPACE  &lt 5 ENTER  &kp SPACE  &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
             >;
-
-            sensor-bindings =
-                <&mouse_scroll SCRL_UP SCRL_DOWN>,
-                <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
         Mac-Function_Layer {
@@ -115,10 +99,6 @@
 &kp LEFT_SHIFT  &trans        &trans       &trans     &mkp MB3     &trans                &kp NON_US_BACKSLASH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp EXCLAMATION    &kp QUESTION  &kp SINGLE_QUOTE
 &kp LCTRL       &trans                                &trans       &trans                &kp BACKSPACE          &kp ENTER         &trans             &trans             &trans        &kp HASH
             >;
-
-            sensor-bindings =
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
 
         Win-Function_Layer {
@@ -128,10 +108,6 @@
 &kp LEFT_SHIFT  &trans        &trans       &trans     &mkp MB3         &trans                &kp NON_US_BACKSLASH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp EXCLAMATION    &kp QUESTION  &kp SINGLE_QUOTE
 &kp LCTRL       &trans                                &trans           &trans                &kp BACKSPACE          &kp ENTER         &trans             &trans             &trans        &kp HASH
             >;
-
-            sensor-bindings =
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
 
         Mac-Common_Layer {
@@ -141,10 +117,6 @@
 &kp LEFT_SHIFT  &trans        &trans       &kp LG(DOWN_ARROW)  &trans                 &trans       &kp LG(T)           &kp LS(LG(TAB))  &kp LEFT_ARROW       &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
 &kp LCTRL       &trans                                         &trans                 &trans       &trans              &trans           &trans               &trans          &trans           &kp END
             >;
-
-            sensor-bindings =
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         Win-Common_Layer {
@@ -154,10 +126,6 @@
 &kp LEFT_SHIFT  &trans        &trans       &kp LG(DOWN_ARROW)  &trans                 &trans           &kp LC(T)           &kp LC(PAGE_DOWN)  &kp LEFT_ARROW       &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
 &kp LCTRL       &trans                                         &trans                 &trans           &trans              &trans             &trans               &trans          &trans           &kp END
             >;
-
-            sensor-bindings =
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         Auto-MOUSE_Layer {
@@ -176,8 +144,6 @@
 &kp F11  &kp F12  &kp LG(LS(LEFT_ARROW))  &trans  &kp LG(LS(RIGHT_ARROW))    &trans     &kp AMPERSAND  &kp ASTERISK  &kp SLASH  &kp N1  &kp N2         &kp N3
 &trans   &trans                                   &trans                     &trans     &kp BACKSPACE  &kp RET       &trans     &trans  &kp AMPERSAND  &kp BSPC
             >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
         Setting_Layer {
