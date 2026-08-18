@@ -6,3 +6,4 @@ url: https://github.com/razilyis/zmk-config-AroundForty-LB
 requires: [seeed_xiao]
 features:
   - keys
+  - pointer

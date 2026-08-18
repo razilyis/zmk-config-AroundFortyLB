@@ -58,6 +58,17 @@
             ;
      };
 
+    /* DYA Studio のレイアウト上に左側トラックボールを表示する。 */
+    trackball_layout: trackball_layout {
+        compatible = "cormoran,physical-layout-trackball";
+        display-name = "Trackball";
+        size = <180>;
+        x = <200>;
+        y = <220>;
+        linked-device-identifiers = "trackball";
+        linked-subsystems = "cormoran__pmw3610";
+    };
+
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <11>;
